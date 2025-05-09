@@ -12,7 +12,6 @@ on:
       - release/*
       - feature/*
 
-
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -27,12 +26,12 @@ jobs:
 
       - name: Checkstyle шалгах
         run: mvn checkstyle:check
+        working-directory: ./calculator
 
       - name: Тест ба Coverage шалгах
         run: mvn test jacoco:check
+        working-directory: ./calculator
 
       - name: Coverage тайлан үүсгэх
         run: mvn jacoco:report
-
-
-  
+        working-directory: ./calculator
