@@ -30,3 +30,6 @@ jobs:
 
       - name: Coverage тайлан үүсгэх
         run: mvn jacoco:report
+
+
+  
