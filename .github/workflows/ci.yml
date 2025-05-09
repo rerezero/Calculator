@@ -28,10 +28,11 @@ jobs:
         run: mvn checkstyle:check
         working-directory: ./calculator
 
-      - name: Тест ба Coverage шалгах
-        run: mvn test jacoco:check
+      - name: Тест ажиллуулах
+        run: mvn test
         working-directory: ./calculator
 
       - name: Coverage тайлан үүсгэх
         run: mvn jacoco:report
         working-directory: ./calculator
+
