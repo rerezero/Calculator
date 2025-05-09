@@ -1,0 +1,38 @@
+name: CI Процесс
+
+on:
+  push:
+    branches:
+      - develop
+      - release/*
+      - feature/*
+  pull_request:
+    branches:
+      - develop
+      - release/*
+      - feature/*
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: JDK 17 тохируулах
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Checkstyle шалгах
+        run: mvn checkstyle:check
+        working-directory: ./calculator
+
+      - name: Тест ажиллуулах
+        run: mvn test
+        working-directory: ./calculator
+
+      - name: Coverage тайлан үүсгэх
+        run: mvn jacoco:report
+        working-directory: ./calculator
+
